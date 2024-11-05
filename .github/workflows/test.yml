@@ -33,6 +33,7 @@ jobs:
 
       - name: Install Maven dependencies
         run: mvn install -DskipTests  # Install dependencies, skipping tests for now
+        working-directory: ./selenium-test
 
       - name: Install Chrome dependencies (for headless browser)
         run: |
@@ -53,9 +54,10 @@ jobs:
 
       - name: Run Selenium Tests with Maven
         run: mvn test -Dheadless=true  # Run the tests using Maven
+        working-directory: ./selenium-test
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: target  # Upload the test results
+          path: ./selenium-test/target  # Upload the test results
