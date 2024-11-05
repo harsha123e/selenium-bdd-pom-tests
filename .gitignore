@@ -1,0 +1,8 @@
+# Ignore Maven target directory
+**/target/
+/target/
+
+# Ignore IDE-specific files (for IntelliJ IDEA and VS Code)
+.idea/
+*.iml
+.vscode/

@@ -13,28 +13,28 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.10.0</version>
+      <version>4.9.0</version>
     </dependency>
 
     <!-- Cucumber for Behavior Driven Development (BDD) in Java -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
-      <version>7.11.0</version>
+      <version>7.20.1</version>
     </dependency>
 
     <!-- Cucumber integration with JUnit for running tests -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
-      <version>7.11.0</version>
+      <version>7.20.1</version>
     </dependency>
 
-    <!-- JUnit for writing and running unit tests -->
+    <!-- JUnit 5 for writing and running unit tests -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.9.2</version>
       <scope>test</scope>
     </dependency>
 
@@ -42,7 +42,7 @@
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.3.2</version>
+      <version>5.9.2</version>
     </dependency>
   </dependencies>
 
