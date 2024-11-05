@@ -4,6 +4,9 @@ This project is a robust Selenium-based test automation framework designed for t
 
 This project aims to enhance the reliability and efficiency of testing processes while providing clear and maintainable test cases that align with business requirements.
 
+## Test Results Generated from Successful GitHub Actions Integration
+
+![Test Results Generated from Successful GitHub Actions Integration](image.png)
 
 ## Features
 
