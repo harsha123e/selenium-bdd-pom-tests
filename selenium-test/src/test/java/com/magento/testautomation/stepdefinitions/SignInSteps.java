@@ -19,6 +19,8 @@ public class SignInSteps {
     private WebDriver driver;
     private SignInPage signInPage;
     private AccountDashboardPage accountDashboardPage;
+    private static final String LOGIN_URL = "https://magento.softwaretestingboard.com/customer/account/login/";
+    private static final String DASHBOARD_URL = "https://magento.softwaretestingboard.com/customer/account/";
 
     @Before
     public void setup() {
@@ -29,7 +31,7 @@ public class SignInSteps {
 
     @Given("user navigates to the login page")
     public void user_navigates_to_the_login_page() {
-        driver.get("https://magento.softwaretestingboard.com/customer/account/login/");
+        driver.get(LOGIN_URL);
     }
 
     @When("user enters {string} and {string}")
@@ -45,8 +47,7 @@ public class SignInSteps {
 
     @Then("user should successfully log in")
     public void user_should_successfully_log_in() {
-        String expectedUrl = "https://magento.softwaretestingboard.com/customer/account/";
-        assertEquals(expectedUrl, driver.getCurrentUrl());
+        assertEquals(DASHBOARD_URL, driver.getCurrentUrl());
     }
 
     @Then("user should see the account dashboard")

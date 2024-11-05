@@ -8,33 +8,42 @@
   <version>1.0-SNAPSHOT</version>
   <name>selenium-test</name>
   <url>http://maven.apache.org</url>
+
+  <!-- Properties to centralize dependency versions -->
+  <properties>
+    <selenium.version>4.9.0</selenium.version>
+    <cucumber.version>7.20.1</cucumber.version>
+    <junit.version>5.9.2</junit.version>
+    <webdrivermanager.version>5.9.2</webdrivermanager.version>
+  </properties>
+
   <dependencies>
     <!-- Selenium Java bindings for web browser automation -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.9.0</version>
+      <version>${selenium.version}</version>
     </dependency>
 
     <!-- Cucumber for Behavior Driven Development (BDD) in Java -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
-      <version>7.20.1</version>
+      <version>${cucumber.version}</version>
     </dependency>
 
     <!-- Cucumber integration with JUnit for running tests -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
-      <version>7.20.1</version>
+      <version>${cucumber.version}</version>
     </dependency>
 
     <!-- JUnit 5 for writing and running unit tests -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.9.2</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -42,7 +51,7 @@
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.9.2</version>
+      <version>${webdrivermanager.version}</version>
     </dependency>
   </dependencies>
 

@@ -8,5 +8,5 @@ Feature: User Account Management
         And user should see the account dashboard
 
         Examples:
-            | email | password     |
+            | email             | password     |
             | johnkoe@gmail.com | password123@ |

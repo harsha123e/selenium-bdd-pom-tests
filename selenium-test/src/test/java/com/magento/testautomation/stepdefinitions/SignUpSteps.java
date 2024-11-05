@@ -21,6 +21,9 @@ public class SignUpSteps {
     private SignUpPage signUpPage;
     private AccountDashboardPage accountDashboardPage;
     private String email;
+    private static final String SIGN_UP_URL = "https://magento.softwaretestingboard.com/customer/account/create/";
+    private static final String DASHBOARD_URL = "https://magento.softwaretestingboard.com/customer/account/";
+    private static final String REGISTRATION_CONFIRMATION_MSG = "Thank you for registering with Main Website Store.";
 
     @Before
     public void setup() {
@@ -31,15 +34,15 @@ public class SignUpSteps {
 
     @Given("user is on sign-up page")
     public void user_is_on_sign_up_page() {
-        driver.get("https://magento.softwaretestingboard.com/customer/account/create/");
+        driver.get(SIGN_UP_URL);
     }
 
-    @When("user enters valid details {string}, {string}, email and {string}")
-    public void user_enters_valid_details_and(String firstName, String lastName, String password) {
+    @When("user enters valid details {string}, {string}, {string} and {string}")
+    public void user_enters_valid_details_and(String firstName, String lastName, String email, String password) {
         this.email = generateUniqueEmail(firstName); // Generate a unique email
         signUpPage.enterFirstName(firstName);
         signUpPage.enterLastName(lastName);
-        signUpPage.enterEmail(email);
+        signUpPage.enterEmail(this.email);
         signUpPage.enterPassword(password);
         signUpPage.enterConfirmPassword(password);
     }
@@ -55,14 +58,12 @@ public class SignUpSteps {
 
     @Then("user should see a confirmation message")
     public void user_should_see_a_confirmation_message() {
-        String expectedMessage = "Thank you for registering with Main Website Store.";
-        assertEquals(expectedMessage, accountDashboardPage.getConfirmationMessage());
+        assertEquals(REGISTRATION_CONFIRMATION_MSG, accountDashboardPage.getConfirmationMessage());
     }
 
     @Then("user should be redirected to the account dashboard")
     public void user_should_be_redirected_to_the_account_dashboard() {
-        String expectedUrl = "https://magento.softwaretestingboard.com/customer/account/";
-        assertEquals(expectedUrl, driver.getCurrentUrl());
+        assertEquals(DASHBOARD_URL, driver.getCurrentUrl());
     }
 
     @Then("user should see their details on the account dashboard")
@@ -70,5 +71,4 @@ public class SignUpSteps {
         assertTrue(accountDashboardPage.isMyAccountVisible());
         assertTrue(accountDashboardPage.getUserDetails().contains(email));
     }
-
 }
