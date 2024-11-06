@@ -11,6 +11,8 @@ public class SignUpPage {
     private By passwordField = By.id("password");
     private By confirmPasswordField = By.id("password-confirmation");
     private By createAccountButton = By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button");
+    private By userAlreadyExistsErrorMsg = By.xpath("//*[@id=\"maincontent\"]/div[2]/div[2]/div/div/div");
+    private By weakPasswordErrorMsg = By.id("password-error");
 
     public SignUpPage(WebDriver driver) {
         this.driver = driver;
@@ -39,4 +41,13 @@ public class SignUpPage {
     public void clickCreateAccount() {
         driver.findElement(createAccountButton).click();
     }
+
+    public boolean isEmailInUseErrorMessageDisplayed() {
+        return driver.findElement(userAlreadyExistsErrorMsg).isDisplayed();
+    }
+
+    public boolean isPasswordStrengthErrorMessageDisplayed() {
+        return driver.findElement(weakPasswordErrorMsg).isDisplayed();
+    }
+
 }

@@ -11,6 +11,7 @@ import com.magento.testautomation.driver.WebDriverSetup;
 import com.magento.testautomation.pages.AccountDashboardPage;
 import com.magento.testautomation.pages.SignUpPage;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -70,5 +71,38 @@ public class SignUpSteps {
     public void user_should_see_their_details_on_the_account_dashboard() {
         assertTrue(accountDashboardPage.isMyAccountVisible());
         assertTrue(accountDashboardPage.getUserDetails().contains(email));
+    }
+
+    @When("user enters valid details {string}, {string}, existing {string} and {string}")
+    public void user_enters_the_existing_email_and_valid_details(String firstName, String lastName, String email,
+            String password) {
+        signUpPage.enterFirstName(firstName);
+        signUpPage.enterLastName(lastName);
+        signUpPage.enterEmail(email);
+        signUpPage.enterPassword(password);
+        signUpPage.enterConfirmPassword(password);
+    }
+
+    @Then("user should see an error message indicating the email is already in use")
+    public void user_should_see_an_error_message_indicating_the_email_is_already_in_use() {
+        assertTrue(signUpPage.isEmailInUseErrorMessageDisplayed());
+    }
+
+    @When("user enters {string}, {string}, {string} and weak password {string}")
+    public void user_enters_and_weak_password(String firstName, String lastName, String email, String weakPassword) {
+        signUpPage.enterFirstName(firstName);
+        signUpPage.enterLastName(lastName);
+        signUpPage.enterEmail(email);
+        signUpPage.enterPassword(weakPassword);
+    }
+
+    @Then("user should see an error message indicating the password does not meet strength requirements")
+    public void user_should_see_an_error_message_indicating_the_password_does_not_meet_strength_requirements() {
+        assertTrue(signUpPage.isPasswordStrengthErrorMessageDisplayed());
+    }
+
+    @After
+    public void tearDown() {
+        WebDriverSetup.closeDriver();
     }
 }
