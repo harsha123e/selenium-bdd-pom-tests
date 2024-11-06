@@ -6,12 +6,16 @@ This project aims to enhance the reliability and efficiency of testing processes
 
 ## Test Results Generated from Successful GitHub Actions Integration
 
-![Test Results Generated from Successful GitHub Actions Integration](image.png)
+![Test Results Generated from Successful GitHub Actions Integration](test-results.png)
 
 ## Features
 
 - **User Login**: Tests the successful login of users with valid credentials.
 - **User Sign Up**: Tests the successful account creation process with valid user details.
+- **Invalid Login Attempt**: Verifies that an error message is displayed when invalid credentials are entered.
+- **Logout Functionality**: Tests the ability of the user to log out successfully.
+- **Duplicate Email Check**: Verifies that the system prevents duplicate email addresses during account creation.
+- **Password Strength Validation**: Ensures that the system enforces strong password requirements during sign-up.
 - **Headless Browser Testing**: Runs tests in a headless browser environment for CI/CD integration.
 
 ## Technologies Used
@@ -62,8 +66,21 @@ mvn test -Dheadless=true
 
 This project is set up with GitHub Actions for continuous integration. The tests will automatically run on every push or pull request to the `main` branch.
 
+## Test Cases
+
+| Test Case ID | Test Case Description             | Preconditions                     | Test Steps                                                                                                                                                  | Expected Result                                                              | Status |
+|--------------|-----------------------------------|-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------|
+| TC001        | Verify Successful Account Creation | User is on the sign-up page       | 1. Given user is on sign-up page.<br>2. When user enters valid user details.<br>3. Then user clicks "Create Account."                                       | User should see a confirmation message and be redirected to the account dashboard. | Pass   |
+| TC002        | Verify Successful Login            | Account created from TC001        | 1. Given user is on login page.<br>2. When user enters valid credentials.<br>3. Then user clicks "Sign In."                                               | User should successfully log in and see the account dashboard.                 | Pass   |
+| TC003        | Verify Invalid Login Attempt       | User is on the login page         | 1. Given user navigates to the login page.<br>2. When user enters invalid credentials email and password.<br>3. And clicks "Sign In."                    | User should see an error message indicating incorrect credentials.             | Pass   |
+| TC004        | Verify Logout Functionality        | User is logged into their account | 1. Given user is logged into their account.<br>2. When user clicks on the logout button.                                                                   | User should be redirected to the sign-out page and no longer see the account dashboard. | Pass   |
+| TC005        | Verify Duplicate Email Check       | User is on the sign-up page       | 1. Given user is on sign-up page.<br>2. When user enters valid details first name, last name, existing email, and password.<br>3. And clicks "Create Account." | User should see an error message indicating the email is already in use.      | Pass   |
+| TC006        | Verify Password Strength Validation | User is on the sign-up page       | 1. Given user is on sign-up page.<br>2. When user enters first name, last name, email, and weak password.                                                  | User should see an error message indicating the password does not meet strength requirements. | Pass   |
+
 ## Acknowledgments
 
 - [Selenium](https://www.selenium.dev/) - For providing the web automation framework.
 - [Cucumber](https://cucumber.io/) - For the BDD framework.
 - [JUnit](https://junit.org/) - For testing.
+
+---
