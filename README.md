@@ -36,6 +36,7 @@ This project aims to enhance the reliability and efficiency of testing processes
    ```bash
    git clone https://github.com/harsha123e/selenium-bdd-pom-tests.git
    cd selenium-bdd-pom-tests
+   cd selenium-test
    ```
 
 2. Install dependencies:
